@@ -86,9 +86,11 @@ QUIJOTE simulation data are available from https://quijote-simulations.readthedo
     Each parameter means the number of the training and validation data, respectively. The remaining data in ${input_dir} are used as the test data.
 
 - num_epochs, lr, weight_decay
+
   Each means the number of training, the learning rate, and the parameter of the strangth of the penalty in L2 regularization.
 
 - load_model
+
   When you re-train or test the CNN (NN), you can specify the model of your CNN (NN) used to retrain or test by this parametr.
 
 - prediction
