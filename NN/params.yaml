@@ -1,0 +1,26 @@
+data_io:
+  input_dir: "./input_data"
+  output_result: "./results"
+  model_name: "cnn_model"
+  test_file: "test.txt"
+  filename: "Pk_m_RS0_z=0.5.txt"
+  labelfile: "z05.dat"
+
+machine_select:
+  gpu: "0"
+
+config_input:
+  img_size: 39
+  batch_size: 16
+  num_train: 1500  # number of data for training
+  num_val: 100  # number of data for validation
+  ## remaining data are used for test.
+
+params_ML:
+  num_epochs: 5
+  lr: 5e-7
+  weight_decay: 0.1  # L2 regularization
+
+mode:
+  prediction: False
+  load_model: "./results/min_val_model_0.p"

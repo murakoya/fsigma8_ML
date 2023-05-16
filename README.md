@@ -10,6 +10,10 @@ QUIJOTE simulation data are available from https://quijote-simulations.readthedo
 
 ## the contents in CNN (NN) directory
 
+- params.yaml
+
+    parameter settings.
+
 - cnn_model.py (nn_model.py)
 
     define CNN architecure. Please see Section 4.1 in our paper for details. (For NN, this file is named as nn_model.py)
@@ -20,7 +24,7 @@ QUIJOTE simulation data are available from https://quijote-simulations.readthedo
 
 - calc.py
 
-    setting parameters and execution of training and test.
+    execution of training and test.
 
 - results, and results/models directory
 
@@ -31,7 +35,7 @@ QUIJOTE simulation data are available from https://quijote-simulations.readthedo
     a few samples are prepared in this directroy.
 
 
-### parameters in calc.py for CNN
+### parameters in params.yaml for CNN
 
 - input_dir
 
@@ -138,6 +142,6 @@ python calc.py
 ```
 .
 
-At the end of operation, the model after training and the model when the loss value is minimized in training are saved. And then, \${model_name}.pkl is copied into \${output_result}/models as modelYYYYMMDD_hour_minute.pkl.
+At the end of operation, the model after training, the model when the loss value is minimized in training, and the value of loss function for training and validation data for each epoch are saved. And then, \${model_name}.pkl is copied into \${output_result}/models as modelYYYYMMDD_hour_minute.pkl.
 
 This code's operation is checked for Python 3.6.9 and Pytorch 1.5.0.

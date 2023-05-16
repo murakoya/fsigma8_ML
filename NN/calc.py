@@ -7,36 +7,46 @@ import time
 import glob
 
 ### parameters ###
-# data
-model_name = "nn_model"
-input_dir = "input_data"
-output_result = "./results"
-test_file = "test.txt"
+with open('params.yaml', 'r') as yml:
+    params = yaml.safe_load(yml)
 
-filename = "Pk_m_RS0_z=0.5.txt"
-labelfile = "z05.dat"
+# data
+input_dir = params['data_io']['input_dir']
+output_result = params['data_io']['output_result']
+model_name = params['data_io']['model_name']
+test_file = params['data_io']['test_file']
+
+filename = params['data_io']['filename']
+labelfile = params['data_io']['labelfile']
 
 # machine
 # 0-3
-gpu = "0"
+gpu = params['machine_select']['gpu']
 
 # input image
-img_size = 39
-batch_size = 16
+img_size = params['config_input']['img_size']
+batch_size = params['config_input']['batch_size']
+ch = params['config_input']['ch']
+num_train = params['config_input']['num_train'] # number of data
+for training
+num_val = params['config_input']['num_val'] # number of data for validation
+## remaining data are used for test.
 
-# params pof machie learning
-num_epochs = 3000
-lr = 5e-5
-weight_decay = 0.  # L2 regularization
+# params of machie learning
+num_epochs = params['params_ML']['num_epochs']
+lr = float(params['params_ML']['lr'])
+weight_decay = params['params_ML']['weight_decay']  # L2 regularization
 
 ## when below parameter is filepath to saved model,
 ## training continue from where training left off last time.
 # load_model = None
+#if os.path.isfile(output_result + "/" + model_name + ".pkl"):
 load_model = output_result + "/" + model_name + ".pkl"
 
 # when you want to test CNN, please switch below parameter to True.
-prediction = False
-#load_model = output_result + "/min_val_model_0.p"
+prediction = params['mode']['prediction']
+if prediction == True:
+    load_model = params['mode']['load_model']
 
 #####################################################
 # select gpu
