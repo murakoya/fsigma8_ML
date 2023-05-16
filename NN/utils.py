@@ -8,7 +8,7 @@ import pickle
 
 # data preprocessing
 class MyTransformer:
-    def __init__(self, box_size, ch=1, phase="train"):
+    def __init__(self, box_size, ch=3, phase="train"):
         self.box_size = box_size
         self.ch = ch
         self.phase = phase
@@ -20,7 +20,7 @@ class MyTransformer:
         pass
 
     def __call__(self, file_path):
-        pk = np.loadtxt(file_path)[0:39]
+        pk = np.loadtxt(file_path)[0:int(self.box_size)]
         pk = pk.T[1:]
         #pk.resize(len(pk[0]), 3)
         pk = pk.T.astype(np.float32)

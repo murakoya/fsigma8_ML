@@ -1,5 +1,4 @@
 # import modules
-from matplotlib.dviread import Box
 import numpy as np
 import torch
 import glob

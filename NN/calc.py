@@ -21,9 +21,8 @@ labelfile = "z05.dat"
 gpu = "0"
 
 # input image
-img_size = 38
+img_size = 39
 batch_size = 16
-ch = 1
 
 # params pof machie learning
 num_epochs = 3000
@@ -78,8 +77,8 @@ shuffle_number = make_shuffle_number(num_total=num_data, seed=12345)
     split_list=shuffle_number,
     filename=filename,
     labelfile=labelfile,
-    num_train=1500,
-    num_val=100,
+    num_train=num_train,
+    num_val=num_val,
 )
 
 mean, std = calc_mean_std_of_output(
@@ -87,7 +86,7 @@ mean, std = calc_mean_std_of_output(
 )
 
 transform_train = MyTransformer(
-    box_size=int(img_size), ch=int(ch), phase="train"
+    box_size=int(img_size), ch=3, phase="train"
 )
 dataset_train = MyDataset(
     file_names=images_train,
@@ -97,7 +96,7 @@ dataset_train = MyDataset(
     transform=transform_train,
 )
 
-transform_val = MyTransformer(box_size=int(img_size), ch=int(ch), phase="val")
+transform_val = MyTransformer(box_size=int(img_size), ch=3, phase="val")
 dataset_val = MyDataset(
     file_names=images_val,
     labels=labels_val,
@@ -107,7 +106,7 @@ dataset_val = MyDataset(
 )
 
 transform_test = MyTransformer(
-    box_size=int(img_size), ch=int(ch), phase="test"
+    box_size=int(img_size), ch=3, phase="test"
 )
 dataset_test = MyDataset(
     file_names=images_test,

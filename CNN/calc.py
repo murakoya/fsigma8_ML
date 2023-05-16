@@ -7,9 +7,9 @@ import glob
 
 ### parameters ###
 # data
-model_name = "cnn_model"
 input_dir = "./input_data"
 output_result = "./results"
+model_name = "cnn_model"
 test_file = "test.txt"
 
 # machine
@@ -20,6 +20,9 @@ gpu = "0"
 img_size = 40
 batch_size = 16
 ch = 1
+num_train = 1500 # number of data for training
+num_val=100 # number of data for validation
+## remaining data are used for test.
 
 # params of machie learning
 num_epochs = 200
@@ -71,8 +74,8 @@ shuffle_number = make_shuffle_number(num_total=num_data, seed=12345)
 ) = filenames_and_labels(
     path_to_data=input_dir,
     split_list=shuffle_number,
-    num_train=int(num_data*0.7),
-    num_val=int(num_data*0.1),
+    num_train=num_train,
+    num_val=num_val,
 )
 
 mean, std = calc_mean_std_of_output(
