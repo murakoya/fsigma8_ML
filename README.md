@@ -4,7 +4,7 @@ These codes are used for the ML analysis in [arXiv number].
 
 There are the CNN codes used for the image analysis of dark matter of jalo distribution in CNN,
 
-nnd the NN codes used for the analysis of the legendre expanded power spectrum.
+and the NN codes used for the analysis of the legendre expanded power spectrum. We also include the codes for the Fisher matrix analysis.
 
 QUIJOTE simulation data are available from https://quijote-simulations.readthedocs.io/en/latest/access.html
 
@@ -140,8 +140,10 @@ After setting pf parameters, you can train or test the CNN or NN by doing
 ```
 python calc.py
 ```
-.
-
 At the end of operation, the model after training, the model when the loss value is minimized in training, and the value of loss function for training and validation data for each epoch are saved. And then, \${model_name}.pkl is copied into \${output_result}/models as modelYYYYMMDD_hour_minute.pkl.
 
 This code's operation is checked for Python 3.6.9 and Pytorch 1.5.0.
+
+## the contents in Fisher directory
+
+The main code is "fisher_sn_quijote.py", which can be ran in a cluster (using SLURM) via the "script_v1.sh" script. The rest of the files are example output of the code.
